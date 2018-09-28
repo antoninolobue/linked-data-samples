@@ -9,7 +9,7 @@ import time
 def dbpediaSpotlight(text):
 
     subjects = []    
-    
+    #*
     data= urllib.parse.urlencode({'text' : text,'confidence':'0.5', 'types' : 'DBpedia:Event, DBpedia:Food, DBpedia:Name, DBpedia:Person, DBpedia:Place, DBpedia:Work'})
  
     data = data.encode('utf-8')
