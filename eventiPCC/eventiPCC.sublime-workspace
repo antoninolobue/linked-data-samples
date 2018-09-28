@@ -42,6 +42,16 @@
 				"buffer_size": 4066,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "readme.md",
+			"settings":
+			{
+				"buffer_size": 73,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "# eventiPCC"
+			}
 		}
 	],
 	"build_system": "",
@@ -92,8 +102,7 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/lobuea/Repositories/linked-data-samples-master/linked-data-samples",
-		"/Users/lobuea/Repositories/linked-data-samples-master/linked-data-samples/eventiPCC"
+		"/Users/lobuea/Repositories/linked-data-samples-master/linked-data-samples"
 	],
 	"file_history":
 	[
@@ -188,7 +197,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -213,6 +222,35 @@
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "readme.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 73,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43,
+								43
+							]
+						],
+						"settings":
+						{
+							"auto_name": "# eventiPCC",
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
