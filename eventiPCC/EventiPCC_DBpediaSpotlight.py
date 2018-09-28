@@ -38,7 +38,7 @@ def dbpediaSpotlight(text):
         subjects == list(set(subjects))
 
     return subjects 
-     
+     #####
 
 
 
