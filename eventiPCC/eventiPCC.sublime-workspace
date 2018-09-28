@@ -1,0 +1,322 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tenant",
+				"tenantID"
+			],
+			[
+				"devi",
+				"deviceID"
+			],
+			[
+				"ev",
+				"envID"
+			],
+			[
+				"sear",
+				"searchVal"
+			],
+			[
+				"env",
+				"environmentID"
+			],
+			[
+				"tena",
+				"tenantID"
+			],
+			[
+				"devkey",
+				"Devkey"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "EventiPCC_DBpediaSpotlight.py",
+			"settings":
+			{
+				"buffer_size": 4066,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/lobuea/Repositories/linked-data-samples-master/linked-data-samples",
+		"/Users/lobuea/Repositories/linked-data-samples-master/linked-data-samples/eventiPCC"
+	],
+	"file_history":
+	[
+		"/Users/lobuea/Desktop/PPV/ATOM/ATOM-ppv-FAQs-mock_04092018.json",
+		"/Users/lobuea/Desktop/PPV/ATOM/ATOM-ppv_mock 25052018-review3.json",
+		"/Users/lobuea/Desktop/PPV/ATOM/ATOM-ppv_mock 17052018-review2 copy.json",
+		"/Users/lobuea/Desktop/PPV/ATOM/ATOM-ppv_mock 04052018.json",
+		"/Users/lobuea/Documents/Personale/Lavoro/Research/Papers/My Papers/PCC2018 Semantic/PCC_queries.txt",
+		"/Users/lobuea/Desktop/PCC_queries.txt",
+		"/Users/lobuea/Downloads/SkyQ_labels_PROD-live_15062018.json",
+		"/Users/lobuea/Downloads/tesi.ass",
+		"/Users/lobuea/Desktop/DE_GDPR_T&C.txt",
+		"/Users/lobuea/Desktop/DE_Q_May_T&C.txt",
+		"/Users/lobuea/Desktop/DE_STB_May_T&C_clean.txt",
+		"/Users/lobuea/Desktop/DE__STB-Q_GDPR_T&C.txt",
+		"/Users/lobuea/Desktop/PPV/ATOM-ppv_mock-noevents17052018.json",
+		"/Users/lobuea/Desktop/PPV/ATOM-ppv_mock 17052018-review2.json",
+		"/Users/lobuea/Desktop/ATOM-ppv_mock 17052018-review2.json",
+		"/Users/lobuea/Desktop/Privacy_Q_GDPR.txt",
+		"/Users/lobuea/Downloads/itwiki-20150121-labels.ttl",
+		"/Users/lobuea/Documents/Personale/WorkDir/Python/SparqlWrapper_ex_dbpedia_8b.py",
+		"/Users/lobuea/Documents/Personale/WorkDir/Python/csvWriter.py",
+		"/Users/lobuea/go/src/github.com/sky-uk/skystore-bot/cmd/slack-bot/envShop.json",
+		"/Users/lobuea/go/src/github.com/sky-uk/skystore-bot/cmd/slack-bot/main.go",
+		"/Users/lobuea/go/src/github.com/sky-uk/skystore-bot/cmd/slack-bot/commands/help.go",
+		"/Users/lobuea/go/src/github.com/sky-uk/skystore-bot/README.md",
+		"/Users/lobuea/go/src/github.com/sky-uk/skystore-bot/cmd/slack-bot/commands/findLabel.go",
+		"/Users/lobuea/Desktop/skystore-apps-tools-master/labelstool/labels.py",
+		"/Users/lobuea/go/src/github.com/sky-uk/skystore-bot/cmd/slack-bot/commands/bt-decode.go",
+		"/Users/lobuea/go/src/github.com/sky-uk/skystore-bot/cmd/slack-bot/commands/shop.go",
+		"/Users/lobuea/go/src/test/envShop.json",
+		"/Users/lobuea/go/src/github.com/sky-uk/skystore-bot/cmd/slack-bot/env.json",
+		"/Users/lobuea/go/src/github.com/sky-uk/skystore-bot/cmd/slack-bot/commands/config/environment.go",
+		"/Users/lobuea/go/src/test/shops.go",
+		"/Users/lobuea/go/src/httpClient/httpClientAPI.go",
+		"/Users/lobuea/go/src/github.com/sky-uk/skystore-bot/cmd/slack-bot/commands/setup/envSetup.go",
+		"/Users/lobuea/go/src/httpClient/old/httpClient.go",
+		"/Users/lobuea/go/src/github.com/sky-uk/skystore-bot/cmd/slack-bot/commands/unresolved-production-issues-ranking.go",
+		"/Users/lobuea/Downloads/p3b_labels_update.sql",
+		"/Users/lobuea/Downloads/de_qs_navigation_WEB.json",
+		"/Users/lobuea/Downloads/Android_Bundled-PROD_DE_Live-20170928.csv",
+		"/Users/lobuea/Desktop/4.4 labels/Android_Bundled-PROD_DE_Live-20170928.csv",
+		"/Users/lobuea/Desktop/4.4 labels/Android_Bundled-PROD_Live-20170928.csv",
+		"/Users/lobuea/Downloads/Labels Diff-TEST-LIVE2.csv",
+		"/Users/lobuea/Downloads/labels-diff-test_trial-prod_live-20170726T164530.csv",
+		"/Users/lobuea/Downloads/labels-diff-web-test+live.csv",
+		"/Users/lobuea/Downloads/labels-diff-test_trial-prod_trial-201707101635.csv",
+		"/Users/lobuea/Downloads/Labels Diff-TEST-TRIAL1.csv",
+		"/Users/lobuea/Downloads/labels-diff-qs_edge-test_live-201707041447.csv",
+		"/Users/lobuea/Downloads/labels-diff-test_live-test_trial-201707041541.csv",
+		"/Users/lobuea/Downloads/labels-diff-prod+live-v3.csv",
+		"/Users/lobuea/Downloads/labels-diff-names2.csv",
+		"/Users/lobuea/Downloads/labels-web-test+trial (1).csv",
+		"/Users/lobuea/Downloads/labels-diff-web-prod+live.csv",
+		"/Users/lobuea/Downloads/labels-web-test+live (1).csv",
+		"/Users/lobuea/Downloads/labels-web-test+trial.csv",
+		"/Users/lobuea/Documents/Sky Store/04. Sky Store DE/04. Content Mngm/Translations/170316_TranslationMenuItems_OTT_revALB.xlsx",
+		"/Users/lobuea/Documents/Sky Store/04. Sky Store DE/04. Content Mngm/Translations/Labels-Menu_20170128_JS_v03.xlsx",
+		"/Users/lobuea/Desktop/labels.py",
+		"/Users/lobuea/Documents/Personale/Varie/INPS/inspPIN.asp"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "EventiPCC_DBpediaSpotlight.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4066,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 159.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "eventiPCC.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/go/src/test/envShop.json"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"AddTime"
+			]
+		],
+		"width": 507.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 365.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 1
+	}
+}
