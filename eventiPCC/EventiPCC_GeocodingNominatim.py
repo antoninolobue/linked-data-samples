@@ -65,8 +65,13 @@ for event_key in dictEvents.keys():
     
     geolocator = Nominatim(user_agent="PCCevents")
     location = geolocator.geocode(dictEvents[event_key]["place"]+" Palermo")
-    print(dictEvents[event_key]["place"])
+    #print(dictEvents[event_key]["place"])
     print(location)
+    if location:
+        fullAddress = location.address
+        lat = location.latitute
+        lon = location.longitude
+        
 
 #Geocoding an address
 #for event_key in dictEvents.keys():
