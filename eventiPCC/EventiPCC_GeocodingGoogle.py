@@ -60,13 +60,7 @@ for item in queryResult ['results'] ['bindings']:
 
 ##GEOCODING##
 
-#gmaps = googlemaps.Client(key='AIzaSyALmYe5DlyyJuL9rAhyWYQuvvBXvUtecz8')
-for event_key in dictEvents.keys():   
-    
-    geolocator = Nominatim(user_agent="PCCevents")
-    location = geolocator.geocode(dictEvents[event_key]["place"]+" Palermo")
-    print(dictEvents[event_key]["place"])
-    print(location)
+gmaps = googlemaps.Client(key='AIzaSyALmYe5DlyyJuL9rAhyWYQuvvBXvUtecz8')
 
 #Geocoding an address
 for event_key in dictEvents.keys():
@@ -75,7 +69,7 @@ for event_key in dictEvents.keys():
     
     #Request geocode localised IT and withing Palermo place  
     geocode_result = gmaps.geocode(dictEvents[event_key]["place"]+" Palermo",region="IT", language="it")
-    
+    print (geocode_result)
      
     if geocode_result:
         #Parse geocode response    
@@ -104,7 +98,7 @@ for event_key in dictEvents.keys():
         address_instance = "<http://athena.pa.icar.cnr.it/pcc2018/Address/"+event_id+">"
         geoco_instance = "<http://athena.pa.icar.cnr.it/pcc2018/Geo/"+event_id+">"
          
-        #Inferred data upload (per event)
+        Inferred data upload (per event)
         
         update = SPARQLWrapper("http://kossyra.pa.icar.cnr.it:8890/sparql")
         update.setTimeout(15000000)
@@ -135,7 +129,6 @@ for event_key in dictEvents.keys():
                                     
                                 }
                         
-          
                     """)
         try:
             update.query()
