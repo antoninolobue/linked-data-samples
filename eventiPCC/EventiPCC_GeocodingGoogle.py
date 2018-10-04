@@ -98,7 +98,7 @@ for event_key in dictEvents.keys():
         address_instance = "<http://athena.pa.icar.cnr.it/pcc2018/Address/"+event_id+">"
         geoco_instance = "<http://athena.pa.icar.cnr.it/pcc2018/Geo/"+event_id+">"
          
-        Inferred data upload (per event)
+        #Inferred data upload (per event)
         
         update = SPARQLWrapper("http://kossyra.pa.icar.cnr.it:8890/sparql")
         update.setTimeout(15000000)

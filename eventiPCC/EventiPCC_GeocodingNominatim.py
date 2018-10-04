@@ -5,11 +5,10 @@ import googlemaps
 import urllib  
 import requests
 from geopy.geocoders import Nominatim
-import json
-
+ 
 
 sourceGraph= "<http://athena.pa.icar.cnr.it/eventiPCC2018conTesto>"
-targetGraph =  "<http://athena.pa.icar.cnr.it/eventiPCC2018testNominatim>"
+targetGraph =  "<http://athena.pa.icar.cnr.it/eventiPCC2018testNominatim-UPD>"
 dictEvents = {}
 streetAddress = ""
 addressLocality = ""
@@ -63,9 +62,10 @@ for item in queryResult ['results'] ['bindings']:
 
 #Nominatim via GeoPy, see https://geopy.readthedocs.io/en/stable/#nominatim
 for event_key in dictEvents.keys():   
-    #Request geocode localised IT and within Palermo   
+    #Request geocoder Nominatim to GeoPy    
     geolocator = Nominatim(user_agent="PCCevents")
-    location = geolocator.geocode(dictEvents[event_key]["place"]+" Palermo", extratags=True)
+    #Nominatim call with timeout and extratags localised IT and within Palermo
+    location = geolocator.geocode(dictEvents[event_key]["place"]+" Palermo", timeout=100, addressdetails=True, extratags=True)
     #print(dictEvents[event_key]["place"])
 
 
@@ -79,10 +79,21 @@ for event_key in dictEvents.keys():
         if geocode_result["extratags"]:
             if ("wikipedia" in geocode_result["extratags"]):
                 wikipedia = geocode_result["extratags"]["wikipedia"].replace(" ", "_").replace("it:","https://it.wikipedia.org/wiki/")
-                print (wikipedia)
+            else:
+                wikipedia = ""
             if ("wikidata" in geocode_result["extratags"]):
                 wikidata = 'https://www.wikidata.org/wiki/'+geocode_result["extratags"]["wikidata"]
-                print (wikidata)
+            else:
+                wikidata = ""
+        #Get streetAddress either from road or pedestrian field
+        if ("road" in geocode_result["address"]):
+            streetAddress = geocode_result["address"]["road"]
+        if ("pedestrian" in geocode_result["address"]):
+            streetAddress = geocode_result["address"]["pedestrian"]            
+        if ("city" in geocode_result["address"]):
+            addressLocality = geocode_result["address"]["city"]
+        if ("postcode" in geocode_result["address"]):
+            postalCode = geocode_result["address"]["postcode"]
         
  
         event_id = event_key.split("pcc2018/Event/",1)[1]
@@ -106,6 +117,9 @@ for event_key in dictEvents.keys():
                                          """+location_instance+"""  <http://schema.org/address> """+address_instance+""" .
                                          """+location_instance+"""  <http://www.w3.org/2000/01/rdf-schema#label> \""""+dictEvents[event_key]["place"]+"""\" .
                                          """+address_instance+""" a <http://schema.org/PostalAddress> .
+                                         """+address_instance+""" <http://schema.org/addressLocality> \""""+addressLocality+"""\" .
+                                         """+address_instance+""" <http://schema.org/postalCode> \""""+postalCode+"""\" .
+                                         """+address_instance+""" <http://schema.org/streetAddress> \""""+streetAddress+""", """+streetNumber+"""\" .
                                          """+address_instance+"""  <http://www.w3.org/2000/01/rdf-schema#label> \""""+fullAddress+"""\" .
                                          """+location_instance+"""  <http://schema.org/geo> """+geoco_instance+""" .
                                          """+geoco_instance+""" a <http://schema.org/GeoCoordinates> .
@@ -113,6 +127,8 @@ for event_key in dictEvents.keys():
                                          """+geoco_instance+""" <http://schema.org/longitude> \""""+str(lon)+"""\"   .
                                          """+geoco_instance+"""  <http://www.w3.org/2000/01/rdf-schema#label> \""""+str(lat)+","+str(lon)+"""\" .
                                          <"""+event_key+"""> <http://athena.pa.icar.cnr.it/pcc2018/Event/plainAddress> \""""+fullAddress+"""\"
+                                         <"""+event_key+"""> <http://www.w3.org/2002/07/owl#sameAs> \""""+wikidata+"""\"
+                                         <"""+event_key+"""> <http://athena.pa.icar.cnr.it/pcc2018/wikipedia> \""""+wikipedia+"""\"
                                         }
                                         
                                     
