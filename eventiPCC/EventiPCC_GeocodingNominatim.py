@@ -2,24 +2,25 @@ from rdflib.plugin import register, Serializer
 register('json-ld', Serializer, 'rdflib_jsonld.serializer', 'JsonLDSerializer')
 from SPARQLWrapper import SPARQLWrapper, JSON, XML, JSONLD, N3
 import googlemaps
-import urllib  
+import urllib
 import requests
 from geopy.geocoders import Nominatim
- 
+import sys
+import time
 
 sourceGraph= "<http://athena.pa.icar.cnr.it/eventiPCC2018conTesto>"
-targetGraph =  "<http://athena.pa.icar.cnr.it/eventiPCC2018testNominatim-UPD>"
+targetGraph =  "<http://athena.pa.icar.cnr.it/eventiPCC2018nominatim>"
 dictEvents = {}
 streetAddress = ""
 addressLocality = ""
 postalCode = ""
 streetNumber = ""
 
+try:
 ##DATA RETRIEVAL##
-
-result = SPARQLWrapper("http://kossyra.pa.icar.cnr.it:8890/sparql")
-result.setTimeout(15000000)
-result.setQuery("""
+    result = SPARQLWrapper("http://kossyra.pa.icar.cnr.it:8890/sparql")
+    result.setTimeout(15000000)
+    result.setQuery("""
                        SELECT DISTINCT * WHERE {
                             GRAPH """+sourceGraph+"""{
                             ?sub a <http://schema.org/Event> .
@@ -29,15 +30,29 @@ result.setQuery("""
                                 }
                             } 
                 """)
-
-result.setReturnFormat(JSON)
-try:
+    
+    
+    
+    result.setReturnFormat(JSON)
     queryResult = result.query().convert()
+    
+
+except urllib.error.HTTPError as e:
+   if e.code == 404:
+       print ("404 - Page not found!")
+   elif e.code == 403:
+       print ("403 - Access denied!")
+   elif e.code == 500:
+       print ("500 - Internal Server Error!")
+   else:
+       print ("Something happened! Error code" +  str(e.code))
+
+except urllib.error.URLError as e:
+    print ("Some other error happened:" + str(e.reason) )
+    sys.exit(1) 
 except TimeoutError as e:
     print ("Timeout error catched "+ str(e))
-except urllib.error.URLError as e:
-    print ("URLerror" + str(e))
-
+    sys.exit(1)
 
 
 #print(result.query().convert())
@@ -63,7 +78,10 @@ for item in queryResult ['results'] ['bindings']:
 #Nominatim via GeoPy, see https://geopy.readthedocs.io/en/stable/#nominatim
 for event_key in dictEvents.keys():   
     #Request geocoder Nominatim to GeoPy    
-    geolocator = Nominatim(user_agent="PCCevents")
+    geolocator = Nominatim(user_agent="PCC2018")
+    
+    #1 sec sleep time to avoid 429 too many request
+    time.sleep(1) 
     #Nominatim call with timeout and extratags localised IT and within Palermo
     location = geolocator.geocode(dictEvents[event_key]["place"]+" Palermo", timeout=100, addressdetails=True, extratags=True)
     #print(dictEvents[event_key]["place"])
@@ -76,9 +94,11 @@ for event_key in dictEvents.keys():
         print (fullAddress)
         lat = geocode_result["lat"]
         lon = geocode_result["lon"]
+        wikipedia = ""
+        wikidata = ""
         if geocode_result["extratags"]:
             if ("wikipedia" in geocode_result["extratags"]):
-                wikipedia = geocode_result["extratags"]["wikipedia"].replace(" ", "_").replace("it:","https://it.wikipedia.org/wiki/")
+                wikipedia = geocode_result["extratags"]["wikipedia"].replace(" ", "_").replace("it:","http://it.wikipedia.org/wiki/")
             else:
                 wikipedia = ""
             if ("wikidata" in geocode_result["extratags"]):
@@ -126,9 +146,9 @@ for event_key in dictEvents.keys():
                                          """+geoco_instance+""" <http://schema.org/latitude> \""""+str(lat)+"""\" .
                                          """+geoco_instance+""" <http://schema.org/longitude> \""""+str(lon)+"""\"   .
                                          """+geoco_instance+"""  <http://www.w3.org/2000/01/rdf-schema#label> \""""+str(lat)+","+str(lon)+"""\" .
-                                         <"""+event_key+"""> <http://athena.pa.icar.cnr.it/pcc2018/Event/plainAddress> \""""+fullAddress+"""\"
-                                         <"""+event_key+"""> <http://www.w3.org/2002/07/owl#sameAs> \""""+wikidata+"""\"
-                                         <"""+event_key+"""> <http://athena.pa.icar.cnr.it/pcc2018/wikipedia> \""""+wikipedia+"""\"
+                                         <"""+event_key+"""> <http://athena.pa.icar.cnr.it/pcc2018/plainAddress> \""""+fullAddress+"""\" .
+                                         <"""+location_instance+"""> <http://www.w3.org/2002/07/owl#sameAs> \""""+wikidata+"""\" .
+                                         <"""+location_instance+"""> <http://athena.pa.icar.cnr.it/pcc2018/wikipedia> \""""+wikipedia+"""\"
                                         }
                                         
                                     
@@ -136,13 +156,14 @@ for event_key in dictEvents.keys():
                         
           
                     """)
+        
         try:
             update.query()
         except TimeoutError as e:
             print ("Timeout error catched "+ str(e))
             continue
         except urllib.error.URLError as e:
-            print ("URLerror error catched " + str(e))
+            print ("URLerror error catched " + str(e.reason))
             continue
         print ("--- Process done for event: "+event_key+" ---")
           

@@ -123,7 +123,7 @@ for event_key in dictEvents.keys():
                                          """+geoco_instance+""" <http://schema.org/latitude> \""""+str(lat)+"""\" .
                                          """+geoco_instance+""" <http://schema.org/longitude> \""""+str(lon)+"""\"   .
                                          """+geoco_instance+"""  <http://www.w3.org/2000/01/rdf-schema#label> \""""+str(lat)+","+str(lon)+"""\" .
-                                         <"""+event_key+"""> <http://athena.pa.icar.cnr.it/pcc2018/Event/plainAddress> \""""+dictEvents[event_key]["address"]+"""\"
+                                         <"""+event_key+"""> <http://athena.pa.icar.cnr.it/pcc2018/plainAddress> \""""+dictEvents[event_key]["address"]+"""\"
                                         }
                                         
                                     
