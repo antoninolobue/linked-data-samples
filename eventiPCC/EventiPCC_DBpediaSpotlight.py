@@ -38,12 +38,12 @@ def dbpediaSpotlight(text):
         subjects == list(set(subjects))
 
     return subjects 
-     
+     #####
 
 
 
 sourceGraph= "<http://athena.pa.icar.cnr.it/eventiPCC2018conTesto>"
-targetGraph =  "<http://athena.pa.icar.cnr.it/eventiPCC2018linkedData-types>"
+targetGraph =  "<http://athena.pa.icar.cnr.it/eventiPCC2018linkedData>"
 dictEvents = {}
 
 ##DATA RETRIEVAL##
@@ -88,6 +88,7 @@ for item in queryResult ['results'] ['bindings']:
 for event_key in dictEvents.keys():
 #    
     eventTags = dbpediaSpotlight(dictEvents[event_key]["description_bag"])
+    #2 secs sleep time to avoid 429 too many request
     time.sleep(2) 
     if eventTags:
         #for each concept of the bag, add data to the endpoint

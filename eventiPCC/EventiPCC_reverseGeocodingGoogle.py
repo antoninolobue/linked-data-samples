@@ -16,7 +16,7 @@ addressLocality = ""
 postalCode = ""
 streetNumber = ""
 
-##DATA RETRIEVAL##
+##DATA RETRIEVAL testtest ##
 
 result = SPARQLWrapper("http://kossyra.pa.icar.cnr.it:8890/sparql")
 result.setQuery("""
