@@ -1,0 +1,60 @@
+#INFER NEARBY PLACES (POIs)
+INSERT {
+  GRAPH <http://athena.pa.icar.cnr.it/eventiPCC2018linkedData> {
+  ?event_place <http://www.geonames.org/ontology#nearby> ?dbpedia_res .
+  ?dbpedia_res <http://www.w3.org/2000/01/rdf-schema#label> ?dbpedia_label
+}
+}
+WHERE{
+GRAPH <http://athena.pa.icar.cnr.it/eventiPCC2018linkedData> {
+?event_place <http://schema.org/location> ?loc_item .
+?loc_item <http://schema.org/name> ?loc_name .
+?loc_item <http://schema.org/geo>  ?geo_item .
+?geo_item <http://schema.org/latitude> ?event_lat .
+?geo_item <http://schema.org/longitude> ?event_long 
+
+}
+
+GRAPH <http://local.it.dbpedia.org/PCC> {
+?dbpedia_res <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?dbpedia_lat .
+?dbpedia_res <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?dbpedia_long. 
+?dbpedia_res <http://www.w3.org/2000/01/rdf-schema#label> ?dbpedia_label
+}
+FILTER (<bif:haversine_deg_km>(xsd:float(?event_lat), xsd:float(?event_long), xsd:float(?dbpedia_lat), xsd:float(?dbpedia_long)) < 0.25) .
+
+}   
+
+
+#ADD WIKIPEDIA LINKS FOR EACH SEEALSO
+INSERT {
+GRAPH <http://athena.pa.icar.cnr.it/eventiPCC2018linkedData> {
+?event <http://athena.pa.icar.cnr.it/pcc2018/seeAlsoWiki> ?wikipedia
+} }
+WHERE {
+GRAPH <http://local.it.dbpedia.org/PCC> {
+?dbpedia <http://xmlns.com/foaf/0.1/isPrimaryTopicOf> ?wikipedia
+}
+
+GRAPH <http://athena.pa.icar.cnr.it/eventiPCC2018linkedData> {   
+?event <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?dbpedia .
+}
+ 
+}    
+
+ 
+#ADD DBPEDIA LINKS TO LOCATIONS 
+INSERT {
+GRAPH <http://athena.pa.icar.cnr.it/eventiPCC2018-merged-nominatim> {
+?place <http://www.w3.org/2002/07/owl#sameAs> ?dbpedia
+} }
+WHERE {
+GRAPH <http://local.it.dbpedia.org/PCC> {
+?dbpedia <http://xmlns.com/foaf/0.1/isPrimaryTopicOf> ?wikipedia
+}
+
+GRAPH <http://athena.pa.icar.cnr.it/eventiPCC2018-merged-nominatim> {   
+?place <http://athena.pa.icar.cnr.it/pcc2018/wikipedia> ?wikipedia .
+}
+ 
+}  
+
