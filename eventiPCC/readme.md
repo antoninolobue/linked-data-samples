@@ -1,5 +1,5 @@
-## eventiPCC
-Progetto:
+# eventiPCC2018
+### Progetto:
 Un framework basato sui Linked Data per l’arricchimento semantico dei Dati Aperti sugli eventi 
 
 ### Topic: 
